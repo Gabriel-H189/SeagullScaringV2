@@ -265,7 +265,7 @@ def about_program() -> None:
     def github() -> None:
         """Self promo?"""
         
-		open_new(r"github.com/Gabriel-H189/SeagullScaringV2")
+        open_new(r"github.com/Gabriel-H189/SeagullScaringV2")
 
     def extract_gull_effects() -> None:
         """Unzips a `media.zip` from the program directory."""
