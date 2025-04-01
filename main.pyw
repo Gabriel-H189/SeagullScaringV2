@@ -1,10 +1,11 @@
 from configparser import ConfigParser
 from datetime import datetime
 from random import randint, seed
+from sys import exit as sys_exit
 from threading import Thread
 from time import perf_counter, sleep
 from tkinter import END, VERTICAL, WORD
-from tkinter.messagebox import askyesno, showerror, showinfo  # type: ignore
+from tkinter.messagebox import askyesno, showinfo  # type: ignore
 from tkinter.simpledialog import askstring
 from typing import Any
 from webbrowser import open_new
@@ -264,7 +265,7 @@ def about_program() -> None:
 
     def github() -> None:
         """Self promo?"""
-        
+
         open_new(r"github.com/Gabriel-H189/SeagullScaringV2")
 
     def extract_gull_effects() -> None:
@@ -442,3 +443,4 @@ if parser[config[0]]["autostart"] == "True":
 if __name__ == "__main__":
 
     root.mainloop()  # type: ignore
+    sys_exit()
