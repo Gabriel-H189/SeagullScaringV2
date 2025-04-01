@@ -264,13 +264,8 @@ def about_program() -> None:
 
     def github() -> None:
         """Self promo?"""
-
-        showerror(
-            title="Error",
-            message="It has not been the Seagull Scaring V2 Launch Event yet!",
-        )
-        # open_new(r"github.com/<username>/SeagullScaringV2")
-        open_new(r"youtube.com/watch?v=dQw4w9WgXcQ")  # get rick rolled
+        
+		open_new(r"github.com/Gabriel-H189/SeagullScaringV2")
 
     def extract_gull_effects() -> None:
         """Unzips a `media.zip` from the program directory."""
