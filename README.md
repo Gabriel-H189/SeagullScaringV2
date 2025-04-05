@@ -8,6 +8,11 @@ The days of having me run around scaring seagulls manually are over! With Seagul
 
 Recommended settings: 2700 seconds (timer), 60 seconds (min time), 300 seconds (max time), seagull (sound).
 
+### About this project
+Seagull Scaring was created to stop the biggest problem plaguing my school since I can’t remember when. 
+It has been tested to have a 98% success rate against seagulls (or shall I say gulls) of all shapes and sizes!
+Seagull Scaring V2 is a user-friendly GUI interface for Seagull Scaring 1.4 written using the CustomTkinter library.
+
 ### Install instructions
 1. Unzip the program folder.
 2. Set up the virtual environment and install dependencies. (see below)
