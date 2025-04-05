@@ -18,3 +18,15 @@ Recommended settings: 2700 seconds (timer), 60 seconds (min time), 300 seconds (
 2. Activate the environment: `.venv\Scripts\activate.bat`
 3. Install dependencies: `pip install -r requirements.txt`
 4. Run program: `python main.pyw`
+
+### Config file documentation
+In the program directory, there is a file called `ssv2cfg.ini`
+You may edit this file as you desire.
+**All settings must go in the [main] section.**
+
+Valid settings:
+`scaring_time (int)`: How long to run the program for
+`min_time (int)`: Minimum time to wait
+`max_time (int)`: Maximum time to wait
+`default_volume (int)`: Default volume
+`default_sound (str)`: Seagull sound to use. Valid options: seagull, sad seagull, angry seagull, confused seagull, disgust seagull, robot seagull, alarm seagull, Seagull 2, sea gull.
