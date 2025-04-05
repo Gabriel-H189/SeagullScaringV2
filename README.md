@@ -10,8 +10,8 @@ Recommended settings: 2700 seconds (timer), 60 seconds (min time), 300 seconds (
 
 ### About this project
 Seagull Scaring was created to stop the biggest problem plaguing my school since I can’t remember when. 
-It has been tested to have a 98% success rate against seagulls (or shall I say gulls) of all shapes and sizes!
-Seagull Scaring V2 is a user-friendly GUI interface for Seagull Scaring 1.4 written using the CustomTkinter library.
+It has been tested to have a 98% success rate against seagulls (or shall I say gulls) of all shapes and sizes! 
+Seagull Scaring V2 is a user-friendly GUI interface for Seagull Scaring 1.4 written using the CustomTkinter library. 
 The recommended settings are meant to be used during 1 lunchtime.
 
 ### Install instructions
@@ -32,7 +32,8 @@ You may edit this file as you desire.
 
 **All settings must go in the [main] section.**
 
-Valid settings:
+Valid settings: 
+
 `scaring_time (int)`: How long to run the program for.
 
 `min_time (int)`: Minimum time to wait.
@@ -42,3 +43,7 @@ Valid settings:
 `default_volume (int)`: Default volume from 0-100.
 
 `default_sound (str)`: Seagull sound to use. Valid options: seagull, sad seagull, angry seagull, confused seagull, disgust seagull, robot seagull, alarm seagull, Seagull 2, sea gull.
+
+`autostart (str)`: Enable/disable autostart feature. Valid options: yes/no.
+
+`autostart_delay (int)`: Delay seconds for the autostart feature. Not working as of 17/02/2025.
