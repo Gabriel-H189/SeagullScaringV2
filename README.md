@@ -47,3 +47,8 @@ Valid settings:
 `autostart (str)`: Enable/disable autostart feature. Valid options: yes/no.
 
 `autostart_delay (int)`: Delay seconds for the autostart feature. Not working as of 17/02/2025.
+
+### Sending announcements
+To send an announcement, you will need an `alarm_seagull.wav` either from Gabriel's Seagull Sound Pack or your own choosing.
+Click "send announcement" in the program window and a text box will appear for you to enter your message.
+Once you click OK, the alarm seagull sound effect will play twice, then a TTS voice will say "This is a Seagull Wars public service announcement", read out your message, and play the alarm seagull sound twice again.
