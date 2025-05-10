@@ -1,11 +1,12 @@
 from configparser import ConfigParser
 from datetime import datetime
+from os.path import isdir
 from random import randint, seed
 from sys import exit as sys_exit
 from threading import Thread
 from time import perf_counter, sleep
 from tkinter import END, VERTICAL, WORD
-from tkinter.messagebox import askyesno, showinfo  # type: ignore
+from tkinter.messagebox import askyesno, showinfo, showwarning  # type: ignore
 from tkinter.simpledialog import askstring
 from typing import Any
 from webbrowser import open_new
@@ -356,6 +357,14 @@ def send_announcement() -> None:
 
     thread: Thread = Thread(target=_send_a)
     thread.start()
+    
+
+def check_media_folder() -> None:
+    """Verifies that sound effects are available."""
+    
+    if not isdir(r"media"):
+        
+        showwarning(title="No sound effects", message="No media folder present!")
 
 
 seagull: Image.Image = Image.open(fp=r"seagull.png")
@@ -364,7 +373,7 @@ seagull_image: CTkImage = CTkImage(seagull)
 si_label: CTkLabel = CTkLabel(master=root, text="", image=seagull_image)
 si_label.pack()  # type: ignore
 
-# icon
+# Icon
 icon: ImageTk.PhotoImage = ImageTk.PhotoImage(seagull)
 root.iconphoto(True, icon)
 
@@ -438,6 +447,8 @@ about_button.place(x=265, y=350)  # type: ignore
 if parser[config[0]]["autostart"] == "True":
 
     autostart()
+    
+check_media_folder()
 
 # Start program
 if __name__ == "__main__":
