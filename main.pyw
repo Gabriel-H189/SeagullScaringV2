@@ -1,6 +1,6 @@
 from configparser import ConfigParser
 from datetime import datetime
-from os.path import isdir
+from os.path import exists, isdir
 from random import randint, seed
 from sys import exit as sys_exit
 from threading import Thread
@@ -357,14 +357,25 @@ def send_announcement() -> None:
 
     thread: Thread = Thread(target=_send_a)
     thread.start()
-    
+
 
 def check_media_folder() -> None:
     """Verifies that sound effects are available."""
-    
+
     if not isdir(r"media"):
-        
+
         showwarning(title="No sound effects", message="No media folder present!")
+
+
+def check_alarm_seagull() -> None:
+    """Checks for the presence of an alarm seagull sound effect."""
+
+    if not exists(r"media\alarm_seagull.wav"):
+
+        showwarning(
+            title="No alarm seagull",
+            message="No alarm seagull sound present!\nYou will not be able to send announcements.",
+        )
 
 
 seagull: Image.Image = Image.open(fp=r"seagull.png")
@@ -447,8 +458,9 @@ about_button.place(x=265, y=350)  # type: ignore
 if parser[config[0]]["autostart"] == "True":
 
     autostart()
-    
+
 check_media_folder()
+check_alarm_seagull()
 
 # Start program
 if __name__ == "__main__":
