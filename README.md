@@ -2,6 +2,10 @@
 A seagull scaring program with GUI written in Python.
 By Gabriel Alonso-Holt.
 
+![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
+![Static Badge](https://img.shields.io/badge/formatter-black-formatter)
+![Static Badge](https://img.shields.io/badge/linter-pylint-linter)
+
 The days of having me run around scaring seagulls manually are over! With Seagull Scaring, you can just start the program, choose a time to scare seagulls for, and relax as the seagulls fly away when you want.
 
 **Before you proceed, sound effects are not included!**
