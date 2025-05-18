@@ -51,4 +51,9 @@ Valid settings:
 ### Sending announcements
 To send an announcement, you will need an `alarm_seagull.wav` either from Gabriel's Seagull Sound Pack (available separately) or your own choosing.
 Click "send announcement" in the program window and a text box will appear for you to enter your message.
-Once you click OK, the alarm seagull sound effect will play, then a TTS voice will say "This is a Seagull Wars public service announcement", read out your message, and play the alarm seagull sound again.
+Once you click OK, the alarm seagull sound effect will play twice, then a TTS voice will say "This is a Seagull Wars public service announcement", read out your message, and play the alarm seagull sound twice again.
+
+### Errors/warnings
+"No sound effects" - The `media` folder is not present. To fix, download sound effects and move them into the folder.
+
+"No alarm seagull" - The `alarm_seagull.wav` file is not present. Without this file, you will not be able to send announcements. To fix, download a WAV file, name it `alarm_seagull.wav` and place it into the `media` folder.
