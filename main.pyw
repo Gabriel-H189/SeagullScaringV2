@@ -57,11 +57,36 @@ Instructions:
 
 seed()
 
-# Load config file
-parser: ConfigParser = ConfigParser()
-parser.read(r"ssv2cfg.ini")
+config_file_data = """; main settings
+[main]
+scaring_time=2700
+min_time=60
+max_time=300
+default_sound=seagull
+default_volume=20
+autostart=False
+autostart_delay=3 ; Not working as of 17/02/25"""
 
-config: list[str] = parser.sections()
+if not exists(r"ssv2cfg.ini"):
+    print("[*] Config file does not exist, writing...")
+
+    with open(file=r"ssv2cfg.ini", mode="w", encoding="utf-8") as file:
+        file.write(config_file_data)
+
+    print("[*] Config file written!")
+
+    # Load config file
+    parser: ConfigParser = ConfigParser()
+    parser.read(r"ssv2cfg.ini")
+
+    config: list[str] = parser.sections()
+
+else:
+
+    parser: ConfigParser = ConfigParser()
+    parser.read(r"ssv2cfg.ini")
+
+    config: list[str] = parser.sections()
 
 FMT: str = "%d.%m.%y %H:%M:%S"
 
