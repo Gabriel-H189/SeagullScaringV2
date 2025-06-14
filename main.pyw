@@ -354,6 +354,7 @@ def autostart() -> None:
         for i in range(int(parser[config[0]]["autostart_delay"]), 0, -1):
 
             text.insert(END, f"{i}!\n")  # type: ignore
+            text.update()
             sleep(1)
 
         scare_gulls()
