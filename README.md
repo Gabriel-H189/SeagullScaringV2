@@ -51,7 +51,7 @@ Valid settings:
 
 `autostart (str)`: Enable/disable autostart feature. Valid options: yes/no.
 
-`autostart_delay (int)`: Delay seconds for the autostart feature. Not working as of 17/02/2025.
+`autostart_delay (int)`: Delay seconds for the autostart feature.
 
 ### Sending announcements
 To send an announcement, you will need an `alarm_seagull.wav` either from Gabriel's Seagull Sound Pack (available separately) or your own choosing.
