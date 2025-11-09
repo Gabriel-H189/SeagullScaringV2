@@ -7,6 +7,9 @@ By Gabriel Alonso-Holt.
 ![Static Badge](https://img.shields.io/badge/linter-pylint-linter)
 ![Static Badge](https://img.shields.io/badge/type_checker-mypy-blue)
 
+> [!WARNING]
+> Seagull Scaring V2 will reach end of support in July 2026. There will be no further updates to the program after this date.
+
 The days of having me run around scaring seagulls manually are over! With Seagull Scaring, you can just start the program, choose a time to scare seagulls for, and relax as the seagulls fly away when you want.
 
 **Before you proceed, sound effects are not included!**
