@@ -30,6 +30,7 @@ from customtkinter import (  # type: ignore
     W,
     set_appearance_mode,
 )
+from loguru import logger
 from PIL import Image, ImageTk
 from playsound import playsound  # type: ignore
 from pyttsx3 import Engine, init  # type: ignore
@@ -57,36 +58,11 @@ Instructions:
 
 seed()
 
-config_file_data = """; main settings
-[main]
-scaring_time=2700
-min_time=60
-max_time=300
-default_sound=seagull
-default_volume=20
-autostart=False
-autostart_delay=3 ; Not working as of 17/02/25"""
+# Load config file
+parser: ConfigParser = ConfigParser()
+parser.read(r"ssv2cfg.ini")
 
-if not exists(r"ssv2cfg.ini"):
-    print("[*] Config file does not exist, writing...")
-
-    with open(file=r"ssv2cfg.ini", mode="w", encoding="utf-8") as file:
-        file.write(config_file_data)
-
-    print("[*] Config file written!")
-
-    # Load config file
-    parser: ConfigParser = ConfigParser()
-    parser.read(r"ssv2cfg.ini")
-
-    config: list[str] = parser.sections()
-
-else:
-
-    parser: ConfigParser = ConfigParser()
-    parser.read(r"ssv2cfg.ini")
-
-    config: list[str] = parser.sections()
+config: list[str] = parser.sections()
 
 FMT: str = "%d.%m.%y %H:%M:%S"
 
@@ -170,7 +146,8 @@ def get_values() -> None:
         max_time = int(y_time.get())  # type: ignore
 
     # Use default settings
-    except NameError:
+    except NameError as e:
+        logger.error(e)
 
         timer = int(parser[config[0]]["scaring_time"])
 
@@ -191,7 +168,7 @@ def scare_loop(start_config: str = "False") -> None:
 
     global timer, min_time, max_time, effect, gull  # pylint: disable=global-variable-undefined global-variable-not-assigned
 
-    log_window: CTkToplevel = CTkToplevel()
+    log_window: CTkToplevel = CTkToplevel(master=root)
     log_window.title(string="seagull log")
     log_window.geometry(geometry_string="300x300+400+200")
     log_window.attributes("-topmost", 1)  # type: ignore
@@ -332,7 +309,7 @@ def about_program() -> None:
 def autostart() -> None:
     """Autostart function only available through config file."""
 
-    a_window: CTkToplevel = CTkToplevel()
+    a_window: CTkToplevel = CTkToplevel(master=root)
     a_window.title(string="Autostart")
     a_window.attributes("-topmost", 1)  # type: ignore
     a_window.resizable(height=False, width=False)
@@ -367,7 +344,7 @@ def autostart() -> None:
 def send_announcement() -> None:
     """Sends a Seagull Wars public service announcement."""
 
-    message = askstring("Send announcement", "Enter message: ")
+    message = askstring(title="Send announcement", prompt="Enter message: ")
 
     def _send_a() -> None:
 
