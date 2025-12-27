@@ -206,7 +206,7 @@ def scare_loop(start_config: str = "False") -> None:
         timer = int(scaring_time.get())
         min_time = int(x_time.get())  # type: ignore
         max_time = int(y_time.get())  # type: ignore
-        gull = rf"media\{sounds.get().replace(" ", "_")}.wav"
+        gull = rf"media\{sounds.get().replace(" ", "_")!s}.wav"
 
     # Scare seagulls in a loop until timer reaches 0
     while timer > 0:
@@ -256,7 +256,7 @@ def set_volume(volume: float) -> None:
 def about_program() -> None:
     """Shows about window."""
 
-    root_2: CTkToplevel = CTkToplevel()
+    root_2: CTkToplevel = CTkToplevel(master=root)
     root_2.title(string="about this program")
     root_2.geometry(geometry_string="300x175")
     root_2.attributes("-topmost", 1)  # type: ignore
@@ -352,7 +352,7 @@ def send_announcement() -> None:
 
         engine: Engine = init()  # type: ignore
         engine.setProperty("rate", 140)  # type: ignore
-        engine.say(f"This is a Seagull Wars public service announcement. {message}")  # type: ignore
+        engine.say(f"This is a Seagull Wars public service announcement. {message!s}")  # type: ignore
 
         engine.runAndWait()  # type: ignore
 
