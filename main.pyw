@@ -75,13 +75,14 @@ set_appearance_mode("light")
 
 
 def get_time(function: Any):
-    """
-
-    Times any function
-
-    """
+    """Times any function"""
 
     def wrapper(*args: tuple[Any, ...], **kwargs: dict[Any, Any]) -> Any:
+        """Calculates time taken to execute the function
+
+        Returns:
+            Any: Response from the function being timed
+        """
 
         start_time: float = perf_counter()
 
@@ -97,11 +98,7 @@ def get_time(function: Any):
 
 
 def get_values() -> None:
-    """
-
-    Obtains and stores values from setting entry boxes.
-
-    """
+    """Obtains and stores values from setting entry boxes."""
 
     global timer, min_time, max_time, effect, gull  # pylint: disable=global-variable-undefined
 
@@ -160,11 +157,7 @@ def get_values() -> None:
 
 
 def scare_loop(start_config: str = "False") -> None:
-    """
-
-    Seagull scaring loop with log window.
-
-    """
+    """Seagull scaring loop with log window."""
 
     global timer, min_time, max_time, effect, gull  # pylint: disable=global-variable-undefined global-variable-not-assigned
 
@@ -325,6 +318,7 @@ def autostart() -> None:
     abort.pack()  # type: ignore
 
     def start() -> None:
+        """Starts autostart countdown and seagull scaring."""
 
         text.insert(END, "Autostart in...")  # type: ignore
 
@@ -347,6 +341,7 @@ def send_announcement() -> None:
     message = askstring(title="Send announcement", prompt="Enter message: ")
 
     def _send_a() -> None:
+        """Sends announcement in a separate thread."""
 
         playsound(r"media\alarm_seagull.wav")
 
