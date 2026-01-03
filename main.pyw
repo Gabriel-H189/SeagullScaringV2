@@ -1,5 +1,6 @@
 from configparser import ConfigParser
 from datetime import datetime
+from functools import wraps
 from os.path import exists, isdir
 from random import randint, seed
 from sys import exit as sys_exit
@@ -77,6 +78,7 @@ set_appearance_mode("light")
 def get_time(function: Any):
     """Times any function"""
 
+    @wraps(function)
     def wrapper(*args: tuple[Any, ...], **kwargs: dict[Any, Any]) -> Any:
         """Calculates time taken to execute the function
 
@@ -206,17 +208,19 @@ def scare_loop(start_config: str = "False") -> None:
 
         pause: int = randint(a=min_time, b=max_time)
         playsound(gull)  # pylint: disable=possibly-used-before-assignment
-        seagull_log.insert(1.0, f"A seagull was scared on {datetime.now():{FMT}}.\n")  # type: ignore pylint: disable=line-too-long
+        current_time: datetime = datetime.now()
+        seagull_log.insert(1.0, f"A seagull was scared on {current_time:{FMT}}.\n") # pylint: disable=line-too-long
         seagulls_scared += 1
         sleep(pause)
         timer -= pause
 
     seagull_log.configure(state=DISABLED)  # type: ignore
+    current_time: datetime = datetime.now()
 
     # Show a message box when done.
     showinfo(
         title="Seagull Scaring",
-        message=f"Done!\nFinish time: {datetime.now():{FMT}}.\nSeagulls scared: {seagulls_scared:,}",
+        message=f"Done!\nFinish time: {current_time:{FMT}}.\nSeagulls scared: {seagulls_scared:,}",
     )
 
     # Save to file?
