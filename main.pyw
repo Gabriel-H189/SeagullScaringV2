@@ -348,14 +348,17 @@ def send_announcement() -> None:
         """Sends announcement in a separate thread."""
 
         playsound(r"media\alarm_seagull.wav")
+        logger.info(f"Alarm Seagull sound played at {datetime.now()}")
 
         engine: Engine = init()  # type: ignore
         engine.setProperty("rate", 140)  # type: ignore
         engine.say(f"This is a Seagull Wars public service announcement. {message!s}")  # type: ignore
 
         engine.runAndWait()  # type: ignore
+        logger.info("Seagull Wars public service announcement sent.")
 
         playsound(r"media\alarm_seagull.wav")
+        logger.info(f"Alarm Seagull sound played at {datetime.now()}")
 
     thread: Thread = Thread(target=_send_a)
     thread.start()
@@ -365,7 +368,8 @@ def check_media_folder() -> None:
     """Verifies that sound effects are available."""
 
     if not isdir(r"media"):
-
+        
+        logger.warning("No sound effects present!")
         showwarning(title="No sound effects", message="No media folder present!")
 
 
@@ -374,6 +378,7 @@ def check_alarm_seagull() -> None:
 
     if not exists(r"media\alarm_seagull.wav"):
 
+        logger.warning("No alarm seagull sound present!")
         showwarning(
             title="No alarm seagull",
             message="No alarm seagull sound present!\nYou will not be able to send announcements.",
