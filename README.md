@@ -23,6 +23,11 @@ Seagull Scaring V2 is a user-friendly GUI interface for Seagull Scaring 1.4 writ
 The recommended settings are meant to be used during 1 lunchtime (45 minutes).
 
 ### Install instructions
+1. Download latest release from the "releases" page. Make sure you use the correct installer for your computer architecture
+2. Run the installer as administrator and wait for it to install.
+3. Run the "SeagullScaringV2" start menu shortcut.
+
+### Portable install instructions
 1. Unzip the program folder.
 2. Set up the virtual environment and install dependencies. (see below)
 3. Copy a `media.zip` to the program folder, run `main.pyw`, click "about" and then click "extract gull effects".
@@ -55,6 +60,24 @@ Valid settings:
 `autostart (str)`: Enable/disable autostart feature. Valid options: yes/no.
 
 `autostart_delay (int)`: Delay seconds for the autostart feature.
+
+### Building from source
+Clone the repository:
+`git clone https://github.com/Gabriel-H189/SeagullScaringV2`
+
+Create a virtual environment: 
+`python -m venv .venv`
+
+Activate the environment: 
+`.venv\Scripts\activate.bat`
+
+Install dependencies: 
+`pip install -r requirements.txt`
+
+Build (this will take a few minutes):
+`pyinstaller main.pyw -i seagull.ico --onefile --name SeagullScaringV2 --hidden-import=customtkinter --add-data=seagull.png:seagull.png --add-data=ssv2cfg.ini:ssv2cfg.ini`
+
+Run `dist/SeagullScaringV2.exe`
 
 ### Sending announcements
 To send an announcement, you will need an `alarm_seagull.wav` either from Gabriel's Seagull Sound Pack (available separately) or your own choosing.
