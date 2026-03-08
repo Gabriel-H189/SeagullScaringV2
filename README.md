@@ -71,6 +71,9 @@ Create a virtual environment:
 Activate the environment: 
 `.venv\Scripts\activate.bat`
 
+Install prerequisites:
+`pip install pyinstaller`
+
 Install dependencies: 
 `pip install -r requirements.txt`
 
