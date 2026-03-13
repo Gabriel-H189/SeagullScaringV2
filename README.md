@@ -32,7 +32,17 @@ The recommended settings are meant to be used during 1 lunchtime (45 minutes).
 
 **For Linux users:**
 ```
-sudo apt install python3-tk python3-gi python3-venv
+sudo apt install python3-tk python3-gi python3-venv python3-pip cmake
+```
+
+In virtual environment if building from source:
+```
+pip install PyGObject
+```
+
+Build command:
+```
+pyinstaller main.pyw -i seagull.ico --onefile --name SeagullScaringV2 --hidden-import=customtkinter --add-data=seagull.png:seagull.png --add-data=ssv2cfg.ini:ssv2cfg.ini --hidden-import='PIL._tkinter_finder'
 ```
 
 ### Installing dependencies
