@@ -12,8 +12,6 @@ By Gabriel Alonso-Holt.
 
 The days of having me run around scaring seagulls manually are over! With Seagull Scaring, you can just start the program, choose a time to scare seagulls for, and relax as the seagulls fly away when you want.
 
-**Before you proceed, sound effects are not included!**
-
 Recommended settings: 2700 seconds (timer), 60 seconds (min time), 300 seconds (max time), seagull (sound).
 
 ### About this project
@@ -32,11 +30,31 @@ The recommended settings are meant to be used during 1 lunchtime (45 minutes).
 2. Set up the virtual environment and install dependencies. (see below)
 3. Copy a `media.zip` to the program folder, run `main.pyw`, click "about" and then click "extract gull effects".
 
+**For Linux users:**
+```
+sudo apt install python3-tk python3-gi python3-venv
+```
+
 ### Installing dependencies
-1. Run this command to create a virtual environment: `python -m venv .venv`
-2. Activate the environment: `.venv\Scripts\activate.bat`
-3. Install dependencies: `pip install -r requirements.txt`
-4. Run program: `python main.pyw`
+1. Run this command to create a virtual environment:
+```
+python -m venv .venv
+```
+
+2. Activate the environment:
+```
+.venv\Scripts\activate.bat
+```
+
+4. Install dependencies:
+```
+pip install -r requirements.txt
+```
+
+5. Run program:
+```
+python main.pyw
+```
 
 ### Config file documentation
 In the program directory, there is a file called `ssv2cfg.ini`.
@@ -63,27 +81,43 @@ Valid settings:
 
 ### Building from source
 Clone the repository:
-`git clone https://github.com/Gabriel-H189/SeagullScaringV2`
+```
+git clone https://github.com/Gabriel-H189/SeagullScaringV2
+cd SeagullScaringV2
+```
 
 Create a virtual environment: 
-`python -m venv .venv`
+```
+python -m venv .venv
+```
 
 Activate the environment: 
-`.venv\Scripts\activate.bat`
+```
+.venv\Scripts\activate.bat
+```
 
 Install prerequisites:
-`pip install pyinstaller`
+```
+pip install pyinstaller
+```
 
 Install dependencies: 
-`pip install -r requirements.txt`
+```
+pip install -r requirements.txt
+```
 
 Build (this will take a few minutes):
-`pyinstaller main.pyw -i seagull.ico --onefile --name SeagullScaringV2 --hidden-import=customtkinter --add-data=seagull.png:seagull.png --add-data=ssv2cfg.ini:ssv2cfg.ini`
+```
+pyinstaller main.pyw -i seagull.ico --onefile --name SeagullScaringV2 --hidden-import=customtkinter --add-data=seagull.png:seagull.png --add-data=ssv2cfg.ini:ssv2cfg.ini
+```
 
-Run `dist/SeagullScaringV2.exe`
+Run: 
+```
+dist/SeagullScaringV2.exe
+```
 
 ### Sending announcements
-To send an announcement, you will need an `alarm_seagull.wav` either from Gabriel's Seagull Sound Pack (available separately) or your own choosing.
+To send an announcement, you will need an `alarm_seagull.wav` either from Gabriel's Seagull Sound Pack or your own choosing.
 Click "send announcement" in the program window and a text box will appear for you to enter your message.
 Once you click OK, the alarm seagull sound effect will play twice, then a TTS voice will say "This is a Seagull Wars public service announcement", read out your message, and play the alarm seagull sound twice again.
 
