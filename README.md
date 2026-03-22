@@ -10,7 +10,7 @@ By Gabriel Alonso-Holt.
 > [!WARNING]
 > Seagull Scaring V2 will reach end of support in July 2026. There will be no further updates to the program after this date.
 
-The days of having me run around scaring seagulls manually are over! With Seagull Scaring, you can just start the program, choose a time to scare seagulls for, and relax as the seagulls fly away when you want.
+The days of having me run around scaring seagulls manually are over! With Seagull Scaring V2, you can just start the program, choose a time to scare seagulls for, and relax as the seagulls fly away when you want.
 
 Recommended settings: 2700 seconds (timer), 60 seconds (min time), 300 seconds (max time), seagull (sound).
 
@@ -21,7 +21,7 @@ Seagull Scaring V2 is a user-friendly GUI interface for Seagull Scaring 1.4 writ
 The recommended settings are meant to be used during 1 lunchtime (45 minutes).
 
 ### Install instructions
-1. Download latest release from the "releases" page. Make sure you use the correct installer for your computer architecture
+1. Download latest release from the "Releases" page. Make sure you use the correct installer for your computer architecture.
 2. Run the installer as administrator and wait for it to install.
 3. Run the "SeagullScaringV2" start menu shortcut.
 
@@ -31,6 +31,9 @@ The recommended settings are meant to be used during 1 lunchtime (45 minutes).
 3. Copy a `media.zip` to the program folder, run `main.pyw`, click "about" and then click "extract gull effects".
 
 **For Linux users:**
+Install the required packages:  
+
+Ubuntu/Debian:
 ```
 sudo apt install python3-tk python3-gi python3-venv python3-pip cmake
 ```
