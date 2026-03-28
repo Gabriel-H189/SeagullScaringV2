@@ -1,2 +1,7 @@
 .mypy_cache
+*.code-workspace
+.vscode
 __pycache__
+build/
+dist/
+*.spec
