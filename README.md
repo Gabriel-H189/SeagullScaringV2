@@ -43,6 +43,11 @@ Arch:
 sudo pacman -S tk python-pip
 ```
 
+Fedora:
+```
+sudo dnf install python3-pip cmake
+```
+
 In virtual environment if building from source:
 ```
 pip install PyGObject
