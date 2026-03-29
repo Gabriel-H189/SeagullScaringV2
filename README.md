@@ -38,6 +38,11 @@ Ubuntu/Debian:
 sudo apt install python3-tk python3-gi python3-venv python3-pip cmake
 ```
 
+Arch:
+```
+sudo pacman -S tk python-pip
+```
+
 In virtual environment if building from source:
 ```
 pip install PyGObject
