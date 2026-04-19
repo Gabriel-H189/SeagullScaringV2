@@ -68,19 +68,21 @@ Section "Uninstall"
     Delete $INSTDIR\SeagullScaringV2.exe
     Delete $INSTDIR\ssv2cfg.ini
     Delete $INSTDIR\seagull.png
-    Delete $INSTDIR\uninstall.exe
     Delete $INSTDIR\seagull.ico
     Delete $INSTDIR\ssv2_log.txt
-    Delete media\seagull.wav
-    Delete media\alarm_seagull.wav
-    Delete media\confused_seagull.wav
-    Delete media\sad_seagull.wav
-    Delete media\disgust_seagull.wav
-    Delete media\Seagull_2.wav
-    Delete media\sea_gull.wav
-    Delete media\robot_seagull.wav
-    RMDir /r media
+    Delete $INSTDIR\media\seagull.wav
+    Delete $INSTDIR\media\alarm_seagull.wav
+    Delete $INSTDIR\media\confused_seagull.wav
+    Delete $INSTDIR\media\sad_seagull.wav
+    Delete $INSTDIR\media\disgust_seagull.wav
+    Delete $INSTDIR\media\Seagull_2.wav
+    Delete $INSTDIR\media\sea_gull.wav
+    Delete $INSTDIR\media\robot_seagull.wav
+    Delete $DESKTOP\SeagullScaringV2.lnk
+    Delete $SMPROGRAMS\SeagullScaringV2.lnk
+    RMDir /r $INSTDIR\media
 
+    Delete $INSTDIR\uninstall.exe
     RMDir $INSTDIR
 
 SectionEnd
