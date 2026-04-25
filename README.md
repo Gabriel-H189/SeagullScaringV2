@@ -19,6 +19,7 @@ Seagull Scaring was created to stop the biggest problem plaguing my school since
 It has been tested to have a 98% success rate against seagulls (or shall I say gulls) of all shapes and sizes! 
 Seagull Scaring V2 is a user-friendly GUI interface for Seagull Scaring 1.4 written using the CustomTkinter library. 
 The recommended settings are meant to be used during 1 lunchtime (45 minutes).
+Python 3.12.1 or newer is required.
 
 ### Install instructions
 1. Download latest release from the "Releases" page. Make sure you use the correct installer for your computer architecture.
