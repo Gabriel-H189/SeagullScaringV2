@@ -5,22 +5,43 @@ Name "Seagull Scaring V2"
 InstallDir $ProgramFiles\SeagullScaringV2
 BrandingText "Gabriel Alonso-Holt"
 
+; Images
 !define MUI_HEADERIMAGE_BITMAP "header.bmp"
 !define MUI_WELCOMEFINISHPAGE_BITMAP "wizard.bmp"
 !define MUI_ICON "setup.ico"
 
 !define MUI_WELCOMEPAGE_TEXT "Setup will guide you through the installation process of Seagull Scaring V2.\n\nYou should close all other application before continuing.\n\nClick Next to continue and Cancel to exit the Setup Wizard."
 
+Function LaunchLink
+    ExecShell "" "$SMPROGRAMS\SeagullScaringV2.lnk"
+FunctionEnd
+
+; Pages
 !insertmacro MUI_PAGE_WELCOME
 !insertmacro MUI_PAGE_LICENSE "license.rtf"
+!define MUI_LICENSEPAGE_CHECKBOX
+
 !insertmacro MUI_PAGE_COMPONENTS
 !insertmacro MUI_PAGE_DIRECTORY
 !insertmacro MUI_PAGE_INSTFILES
+
+!define MUI_ABORTWARNING
+
+!define MUI_FINISHPAGE_NOAUTOCLOSE
+!define MUI_FINISHPAGE_RUN
+!define MUI_FINISHPAGE_RUN_NOTCHECKED
+!define MUI_FINISHPAGE_RUN_TEXT "Start Seagull Scaring V2"
+!define MUI_FINISHPAGE_RUN_FUNCTION "LaunchLink"
+
 !insertmacro MUI_PAGE_FINISH
 
+; Uninstaller pages
 !insertmacro MUI_UNPAGE_WELCOME
+!insertmacro MUI_UNPAGE_CONFIRM
+!insertmacro MUI_UNPAGE_LICENSE "license.rtf"
 !insertmacro MUI_UNPAGE_DIRECTORY
 !insertmacro MUI_UNPAGE_INSTFILES
+!define MUI_UNFINISHPAGE_NOAUTOCLOSE
 !insertmacro MUI_UNPAGE_FINISH
 
 !insertmacro MUI_LANGUAGE "English"
@@ -42,6 +63,8 @@ Section "Main program"
     File seagull.png
     File seagull.ico
     File ssv2_log.txt
+    File config_docs.txt
+    File readme.txt
 
     CreateShortcut "$SMPROGRAMS\SeagullScaringV2.lnk" "$INSTDIR\SeagullScaringV2.exe"
 
@@ -70,6 +93,7 @@ Section "Uninstall"
     Delete $INSTDIR\seagull.png
     Delete $INSTDIR\seagull.ico
     Delete $INSTDIR\ssv2_log.txt
+    Delete $INSTDIR\config_docs.txt
     Delete $INSTDIR\media\seagull.wav
     Delete $INSTDIR\media\alarm_seagull.wav
     Delete $INSTDIR\media\confused_seagull.wav
