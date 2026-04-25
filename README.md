@@ -15,11 +15,11 @@ The days of having me run around scaring seagulls manually are over! With Seagul
 Recommended settings: 2700 seconds (timer), 60 seconds (min time), 300 seconds (max time), seagull (sound).
 
 ### About this project
-Seagull Scaring was created to stop the biggest problem plaguing my school since I can’t remember when. 
-It has been tested to have a 98% success rate against seagulls (or shall I say gulls) of all shapes and sizes! 
-Seagull Scaring V2 is a user-friendly GUI interface for Seagull Scaring 1.4 written using the CustomTkinter library. 
-The recommended settings are meant to be used during 1 lunchtime (45 minutes).
-Python 3.12.1 or newer is required.
+Seagull Scaring was created to stop the biggest problem plaguing my school since I can’t remember when.  
+It has been tested to have a 98% success rate against seagulls (or shall I say gulls) of all shapes and sizes!  
+Seagull Scaring V2 is a user-friendly GUI interface for Seagull Scaring 1.4 written using the CustomTkinter library.  
+The recommended settings are meant to be used during 1 lunchtime (45 minutes). 
+Python 3.12.1 or newer is required. 
 
 ### Install instructions
 1. Download latest release from the "Releases" page. Make sure you use the correct installer for your computer architecture.
@@ -36,7 +36,7 @@ Install the required packages:
 
 Ubuntu/Debian:
 ```
-sudo apt install python3-tk python3-gi python3-venv python3-pip cmake
+sudo apt install python3-tk python3-gi python3-venv python3-pip cmake -y
 ```
 
 Arch:
@@ -84,6 +84,7 @@ python main.pyw
 In the program directory, there is a file called `ssv2cfg.ini`.
 
 You may edit this file as you desire.
+Administrator privileges may be required to edit the file.
 
 **All settings must go in the [main] section.**
 
