@@ -7,7 +7,7 @@ from sys import exit as sys_exit
 from threading import Thread
 from time import perf_counter, sleep
 from tkinter import END, VERTICAL, WORD
-from tkinter.messagebox import askyesno, showinfo, showwarning  # type: ignore
+from tkinter.messagebox import askyesno, showerror, showinfo, showwarning  # type: ignore
 from tkinter.simpledialog import askstring
 from typing import Any
 from webbrowser import open_new
@@ -57,6 +57,10 @@ Instructions:
 
 """
 
+if not exists("License.rtf"):
+    showerror(title="Product Activation", message="License not found, quitting")
+    sys_exit()
+
 seed()
 
 # Load config file
@@ -92,7 +96,7 @@ def get_time(function: Any):
         end_time: float = perf_counter()
         total_time: float = end_time - start_time
 
-        print(f"Time taken: {total_time:.2f} seconds.")
+        logger.info(f"Time taken: {total_time:.2f} seconds.")
 
         return response
 
@@ -209,7 +213,9 @@ def scare_loop(start_config: str = "False") -> None:
         pause: int = randint(a=min_time, b=max_time)
         playsound(gull)  # pylint: disable=possibly-used-before-assignment
         current_time: datetime = datetime.now()
-        seagull_log.insert(1.0, f"A seagull was scared on {current_time:{FMT}}.\n") # pylint: disable=line-too-long
+        seagull_log.insert(
+            1.0, f"A seagull was scared on {current_time:{FMT}}.\n"
+        )  # pylint: disable=line-too-long
         seagulls_scared += 1
         sleep(pause)
         timer -= pause
@@ -278,13 +284,13 @@ def about_program() -> None:
 
     about_label: CTkLabel = CTkLabel(
         master=root_2,
-        text="Seagull Scaring V2\nBy Gabriel Alonso-Holt",
+        text="Seagull Scaring V2 v2.1.1\nBy Gabriel Alonso-Holt",
         font=("calibri", 16, "bold"),
     )
     about_label.pack(pady=5)  # type: ignore
 
     gh_button: CTkButton = CTkButton(
-        master=root_2, text="go to Gabriel's github", command=github
+        master=root_2, text="view project page", command=github
     )
     gh_button.pack(pady=7)  # type: ignore
 
@@ -342,7 +348,7 @@ def autostart() -> None:
 def send_announcement() -> None:
     """Sends a Seagull Wars public service announcement."""
 
-    message = askstring(title="Send announcement", prompt="Enter message: ")
+    message: str | None = askstring(title="Send announcement", prompt="Enter message: ")
 
     def _send_a() -> None:
         """Sends announcement in a separate thread."""
@@ -368,7 +374,7 @@ def check_media_folder() -> None:
     """Verifies that sound effects are available."""
 
     if not isdir(r"media"):
-        
+
         logger.warning("No sound effects present!")
         showwarning(title="No sound effects", message="No media folder present!")
 
