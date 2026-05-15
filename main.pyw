@@ -2,8 +2,10 @@ from configparser import ConfigParser
 from datetime import datetime
 from functools import wraps
 from os.path import exists, isdir
+from platform import system
 from random import randint, seed
 from sys import exit as sys_exit
+import sys
 from threading import Thread
 from time import perf_counter, sleep
 from tkinter import END, VERTICAL, WORD
@@ -103,7 +105,7 @@ def get_time(function: Any):
     return wrapper
 
 
-def get_values() -> None:
+def get_values_windows() -> str:
     """Obtains and stores values from setting entry boxes."""
 
     global timer, min_time, max_time, effect, gull  # pylint: disable=global-variable-undefined
@@ -138,6 +140,60 @@ def get_values() -> None:
         case "sea gull":
             gull = r"media\sea_gull.wav"
 
+        case _:
+            gull = ""
+
+    return gull
+
+
+def get_values_linux() -> str:
+    global timer, min_time, max_time, effect, gull  # pylint: disable=global-variable-undefined
+
+    effect = sounds.get()
+
+    match effect:
+        case "seagull":
+            gull = r"media/seagull.wav"
+
+        case "sad seagull":
+            gull = r"media/sad_seagull.wav"
+
+        case "confused seagull":
+            gull = r"media/confused_seagull.wav"
+
+        case "angry seagull":
+            gull = r"media/angry_seagull.wav"
+
+        case "disgust seagull":
+            gull = r"media/disgust_seagull.wav"
+
+        case "alarm seagull":
+            gull = r"media/alarm_seagull.wav"
+
+        case "robot seagull":
+            gull = r"media/robot_seagull.wav"
+
+        case "Seagull 2":
+            gull = r"media/Seagull_2.wav"
+
+        case "sea gull":
+            gull = r"media/sea_gull.wav"
+
+        case _:
+            gull = ""
+
+    return gull
+
+
+def get_values() -> None:
+    global timer, min_time, max_time, gull  # pylint: disable=global-variable-undefined
+
+    os = system()
+    match os:
+        case "Windows":
+            gull = get_values_windows()
+        case "Linux":
+            gull = get_values_linux()
         case _:
             pass
 
@@ -205,7 +261,14 @@ def scare_loop(start_config: str = "False") -> None:
         timer = int(scaring_time.get())
         min_time = int(x_time.get())  # type: ignore
         max_time = int(y_time.get())  # type: ignore
-        gull = rf"media\{sounds.get().replace(" ", "_")!s}.wav"
+        os = system()
+        match os:
+            case "Windows":
+                gull = rf"media\{sounds.get().replace(" ", "_")!s}.wav"
+            case "Linux":
+                gull = rf"media/{sounds.get().replace(" ", "_")!s}.wav"
+            case _:
+                pass
 
     # Scare seagulls in a loop until timer reaches 0
     while timer > 0:
@@ -350,7 +413,7 @@ def send_announcement() -> None:
 
     message: str | None = askstring(title="Send announcement", prompt="Enter message: ")
 
-    def _send_a() -> None:
+    def _send_a_windows() -> None:
         """Sends announcement in a separate thread."""
 
         playsound(r"media\alarm_seagull.wav")
@@ -365,6 +428,32 @@ def send_announcement() -> None:
 
         playsound(r"media\alarm_seagull.wav")
         logger.info(f"Alarm Seagull sound played at {datetime.now()}")
+
+    def _send_a_linux() -> None:
+        """Sends announcement in a separate thread."""
+
+        playsound(r"media/alarm_seagull.wav")
+        logger.info(f"Alarm Seagull sound played at {datetime.now()}")
+
+        engine: Engine = init()  # type: ignore
+        engine.setProperty("rate", 140)  # type: ignore
+        engine.say(f"This is a Seagull Wars public service announcement. {message!s}")  # type: ignore
+
+        engine.runAndWait()  # type: ignore
+        logger.info("Seagull Wars public service announcement sent.")
+
+        playsound(r"media/alarm_seagull.wav")
+        logger.info(f"Alarm Seagull sound played at {datetime.now()}")
+
+    def _send_a() -> None:
+        os = system()
+        match os:
+            case "Windows":
+                _send_a_windows()
+            case "Linux":
+                _send_a_linux()
+            case _:
+                pass
 
     thread: Thread = Thread(target=_send_a)
     thread.start()
@@ -382,7 +471,16 @@ def check_media_folder() -> None:
 def check_alarm_seagull() -> None:
     """Checks for the presence of an alarm seagull sound effect."""
 
-    if not exists(r"media\alarm_seagull.wav"):
+    os = system()
+    match os:
+        case "Windows":
+            seagull_present = exists(r"media\alarm_seagull.wav")
+        case "Linux":
+            seagull_present = exists(r"media/alarm_seagull.wav")
+        case _:
+            pass
+
+    if not seagull_present:
 
         logger.warning("No alarm seagull sound present!")
         showwarning(
